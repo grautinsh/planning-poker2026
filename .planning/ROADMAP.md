@@ -28,7 +28,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A participant opens the shared link, enters only a display name, and appears in the room
   3. The host's room controls persist after the host tab reloads (host token cookie survives page reload)
   4. Rooms that are not actively used disappear automatically after 24 hours without any manual action
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Project scaffold + Vitest test infrastructure (Wave 0 stubs)
+- [ ] 01-02-PLAN.md — Lib layer: types, room model, auth helpers, Redis/Pusher singletons
+- [ ] 01-03-PLAN.md — API routes: room create, room read, room join
+- [ ] 01-04-PLAN.md — UI shell: landing page, room page, Pusher hook skeleton
 
 ### Phase 2: Real-Time Core
 **Goal**: Participants can vote on a story and the host can reveal all votes simultaneously — the anti-anchoring mechanic works correctly and in real time for all connected clients
@@ -69,7 +75,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/4 | Not started | - |
 | 2. Real-Time Core | 0/TBD | Not started | - |
 | 3. Session Output | 0/TBD | Not started | - |
 | 4. Reconnection and Polish | 0/TBD | Not started | - |
