@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-foundation-02 lib layer — types, auth, redis, pusher, room model
-last_updated: "2026-03-18T19:20:00.436Z"
+stopped_at: Completed 01-foundation-03 API route handlers
+last_updated: "2026-03-18T19:25:24.731Z"
 last_activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 4
-  completed_plans: 2
+  completed_plans: 3
   percent: 50
 ---
 
@@ -51,6 +51,7 @@ Progress: [█████░░░░░] 50%
 
 *Updated after each plan completion*
 | Phase 01-foundation P02 | 7 | 2 tasks | 9 files |
+| Phase 01-foundation P03 | 2 | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,9 @@ Recent decisions affecting current work:
 - 01-01: @/ alias points to project root (.) not src/ — Next.js --no-src-dir layout, app/ and lib/ at root
 - 01-01: Vitest alias mirrors tsconfig paths exactly to prevent resolution mismatches in tests
 - [Phase 01-foundation]: Upstash Redis singleton at module level; Redis keys centralized in lib/room.ts keys object; toRoomView vote redaction via spread operator; timingSafeEqual for token validation; vitest/globals in tsconfig for tsc compatibility
+- [Phase 01-foundation]: Cookie naming includes roomId (host-token-{roomId}, participant-{roomId}) — prevents cross-room cookie collisions
+- [Phase 01-foundation]: Join endpoint is idempotent: existing cookie + Redis verification returns same participantId on page refresh
+- [Phase 01-foundation]: Pusher trigger in join route is non-blocking (try/catch) — unavailability does not prevent participant joining
 
 ### Pending Todos
 
@@ -79,6 +83,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T19:20:00.434Z
-Stopped at: Completed 01-foundation-02 lib layer — types, auth, redis, pusher, room model
+Last session: 2026-03-18T19:25:24.728Z
+Stopped at: Completed 01-foundation-03 API route handlers
 Resume file: None
