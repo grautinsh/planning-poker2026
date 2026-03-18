@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-03-18)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-03-18 — Roadmap created
+Plan: 1 of 4 in current phase
+Status: In progress
+Last activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 6%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 3 min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-foundation | 1 | 3 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: —
+- Last 5 plans: 01-01 (3 min)
 - Trend: —
 
 *Updated after each plan completion*
@@ -46,6 +46,8 @@ Recent decisions affecting current work:
 - Identity: Server-assigned UUID (not display name) as primary key — enforced from Phase 1
 - Vote hiding: Two serialization views (redacted during voting, full after reveal) — server-side only
 - Host identity: httpOnly cookie storing host token — must be in place before any host controls are built
+- 01-01: @/ alias points to project root (.) not src/ — Next.js --no-src-dir layout, app/ and lib/ at root
+- 01-01: Vitest alias mirrors tsconfig paths exactly to prevent resolution mismatches in tests
 
 ### Pending Todos
 
@@ -60,5 +62,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-18
-Stopped at: Roadmap created — ready to plan Phase 1
+Stopped at: Completed 01-01-PLAN.md — Next.js scaffold, Vitest infrastructure, all Phase 1 deps installed
 Resume file: None

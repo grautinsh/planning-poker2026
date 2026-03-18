@@ -7,15 +7,15 @@
 
 ### Sessions
 
-- [ ] **SESS-01**: Host can create a room and receive a shareable URL
-- [ ] **SESS-02**: Room creation issues a host token stored in an httpOnly cookie, allowing the host to reclaim controls if their tab closes or reloads
-- [ ] **SESS-03**: Rooms automatically expire after 24 hours (Redis TTL — no manual cleanup needed)
+- [x] **SESS-01**: Host can create a room and receive a shareable URL
+- [x] **SESS-02**: Room creation issues a host token stored in an httpOnly cookie, allowing the host to reclaim controls if their tab closes or reloads
+- [x] **SESS-03**: Rooms automatically expire after 24 hours (Redis TTL — no manual cleanup needed)
 - [ ] **SESS-04**: Host can enter a story title that is immediately broadcast and displayed to all participants
 
 ### Identity
 
-- [ ] **IDNT-01**: Participant can join a room by entering only a display name (no account or login required)
-- [ ] **IDNT-02**: Server assigns a UUID to each participant at join time; this UUID (not display name) is the primary key for vote tracking
+- [x] **IDNT-01**: Participant can join a room by entering only a display name (no account or login required)
+- [x] **IDNT-02**: Server assigns a UUID to each participant at join time; this UUID (not display name) is the primary key for vote tracking
 - [ ] **IDNT-03**: Participant can choose to join as an observer (can see all activity but cannot vote)
 - [ ] **IDNT-04**: Participant can reconnect to a room by entering the same name and have their previous vote state restored
 
@@ -68,12 +68,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SESS-01 | Phase 1 | Pending |
-| SESS-02 | Phase 1 | Pending |
-| SESS-03 | Phase 1 | Pending |
+| SESS-01 | Phase 1 | Complete |
+| SESS-02 | Phase 1 | Complete |
+| SESS-03 | Phase 1 | Complete |
 | SESS-04 | Phase 2 | Pending |
-| IDNT-01 | Phase 1 | Pending |
-| IDNT-02 | Phase 1 | Pending |
+| IDNT-01 | Phase 1 | Complete |
+| IDNT-02 | Phase 1 | Complete |
 | IDNT-03 | Phase 2 | Pending |
 | IDNT-04 | Phase 4 | Pending |
 | VOTE-01 | Phase 2 | Pending |
