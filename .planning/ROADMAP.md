@@ -12,7 +12,7 @@ Build a real-time planning poker app from the ground up. Phase 1 establishes the
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Room creation, name-only identity, Redis schema, Pusher skeleton
+- [x] **Phase 1: Foundation** - Room creation, name-only identity, Redis schema, Pusher skeleton (completed 2026-03-18)
 - [ ] **Phase 2: Real-Time Core** - Voting, simultaneous reveal, presence, re-vote
 - [ ] **Phase 3: Session Output** - Session log, post-reveal display, clipboard export
 - [ ] **Phase 4: Reconnection and Polish** - Reconnect by name, UX hardening
@@ -75,7 +75,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 3/4 | In Progress|  |
+| 1. Foundation | 4/4 | Complete   | 2026-03-18 |
 | 2. Real-Time Core | 0/TBD | Not started | - |
 | 3. Session Output | 0/TBD | Not started | - |
 | 4. Reconnection and Polish | 0/TBD | Not started | - |

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-foundation-03 API route handlers
-last_updated: "2026-03-18T19:25:24.731Z"
+stopped_at: Completed 01-foundation-04 UI shell
+last_updated: "2026-03-18T19:51:36.847Z"
 last_activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 4
-  completed_plans: 3
+  completed_plans: 4
   percent: 50
 ---
 
@@ -52,6 +52,7 @@ Progress: [█████░░░░░] 50%
 *Updated after each plan completion*
 | Phase 01-foundation P02 | 7 | 2 tasks | 9 files |
 | Phase 01-foundation P03 | 2 | 2 tasks | 5 files |
+| Phase 01-foundation P04 | 45 | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -70,6 +71,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: Cookie naming includes roomId (host-token-{roomId}, participant-{roomId}) — prevents cross-room cookie collisions
 - [Phase 01-foundation]: Join endpoint is idempotent: existing cookie + Redis verification returns same participantId on page refresh
 - [Phase 01-foundation]: Pusher trigger in join route is non-blocking (try/catch) — unavailability does not prevent participant joining
+- [Phase 01-foundation]: Module-level component extraction: JoinForm, ParticipantList, ParticipantItem defined at module scope — prevents remount on parent re-render and input focus loss
+- [Phase 01-foundation]: Cookie-driven join state: GET /api/rooms/[roomId] returns myParticipantId from cookie so room page skips join form for returning participants
+- [Phase 01-foundation]: Upstash auto-deserialization guard: typeof check before JSON.parse in getParticipants — Upstash SDK may return pre-parsed objects
 
 ### Pending Todos
 
@@ -83,6 +87,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-18T19:25:24.728Z
-Stopped at: Completed 01-foundation-03 API route handlers
+Last session: 2026-03-18T19:51:36.845Z
+Stopped at: Completed 01-foundation-04 UI shell
 Resume file: None
