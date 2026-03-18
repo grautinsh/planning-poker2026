@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers'
 import { getRoom, getParticipants, toRoomView } from '@/lib/room'
 import { redis } from '@/lib/redis'
 
@@ -19,5 +20,11 @@ export async function GET(
   )
 
   const view = toRoomView(room, participants, votes)
-  return Response.json(view)
+
+  // Include myParticipantId so the client can skip the join form if already joined
+  const cookieStore = await cookies()
+  const myParticipantId = cookieStore.get(`participant-${roomId}`)?.value ?? null
+  const isKnown = myParticipantId ? participants.some(p => p.participantId === myParticipantId) : false
+
+  return Response.json({ ...view, myParticipantId: isKnown ? myParticipantId : null })
 }

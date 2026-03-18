@@ -20,14 +20,17 @@ export default function RoomPage() {
     if (res.ok) setRoom(await res.json())
   }, [roomId])
 
-  // Load room state on mount
+  // Load room state on mount — also picks up myParticipantId from cookie via server
   useEffect(() => {
     fetch(`/api/rooms/${roomId}`)
       .then(res => {
         if (!res.ok) throw new Error('Room not found')
-        return res.json() as Promise<RoomView>
+        return res.json() as Promise<RoomView & { myParticipantId: string | null }>
       })
-      .then(data => setRoom(data))
+      .then(data => {
+        setRoom(data)
+        if (data.myParticipantId) setMyParticipantId(data.myParticipantId)
+      })
       .catch(() => setLoadError('Room not found or has expired.'))
   }, [roomId])
 

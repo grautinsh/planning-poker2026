@@ -84,5 +84,7 @@ export async function getRoom(roomId: string): Promise<RoomData | null> {
 export async function getParticipants(roomId: string): Promise<ParticipantData[]> {
   const raw = await redis.hgetall(keys.participants(roomId))
   if (!raw) return []
-  return Object.values(raw).map(v => JSON.parse(v as string) as ParticipantData)
+  return Object.values(raw).map(v =>
+    typeof v === 'string' ? JSON.parse(v) : v as ParticipantData
+  )
 }

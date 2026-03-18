@@ -16,7 +16,7 @@ function ParticipantItem({
 }) {
   return (
     <li className="flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-lg">
-      <span className="font-medium">
+      <span className="font-medium text-gray-900">
         {participant.name}
         {isMe && <span className="ml-1 text-xs text-blue-500">(you)</span>}
       </span>
