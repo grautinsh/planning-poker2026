@@ -91,10 +91,12 @@ describe('POST /api/rooms/[roomId]/next-story — LOG-01', () => {
     expect(res.status).toBe(403)
   })
 
-  it('returns 422 when room.currentStory is empty string', async () => {
+  it('logs (untitled) when room.currentStory is empty string', async () => {
     mockGetRoom.mockResolvedValue({ ...validRevealedRoom, currentStory: '' })
     const res = await POST(makeRequest({ estimate: '5' }), { params })
-    expect(res.status).toBe(422)
+    expect(res.status).toBe(200)
+    const pushed = mockRpush.mock.calls[0][1] as string
+    expect(JSON.parse(pushed)).toMatchObject({ story: '(untitled)', estimate: '5' })
   })
 
   it('returns 400 when estimate body is missing', async () => {

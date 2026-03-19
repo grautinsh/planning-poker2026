@@ -74,7 +74,7 @@ export async function getRoom(roomId: string): Promise<RoomData | null> {
   return {
     roomId,
     hostToken: raw.hostToken as string,
-    revealed: raw.revealed === 'true',
+    revealed: raw.revealed === true || raw.revealed === 'true',
     voteCount: parseInt(raw.voteCount as string ?? '0', 10),
     currentStory: (raw.currentStory as string) ?? '',
     createdAt: parseInt(raw.createdAt as string ?? '0', 10),
@@ -84,9 +84,9 @@ export async function getRoom(roomId: string): Promise<RoomData | null> {
 export async function getParticipants(roomId: string): Promise<ParticipantData[]> {
   const raw = await redis.hgetall(keys.participants(roomId))
   if (!raw) return []
-  return Object.values(raw).map(v =>
-    typeof v === 'string' ? JSON.parse(v) : v as ParticipantData
-  )
+  return Object.values(raw)
+    .map(v => typeof v === 'string' ? JSON.parse(v) : v as ParticipantData)
+    .sort((a, b) => a.joinedAt - b.joinedAt)
 }
 
 export async function getLog(roomId: string): Promise<LogEntry[]> {

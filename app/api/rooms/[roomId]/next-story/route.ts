@@ -27,11 +27,6 @@ export async function POST(
     return Response.json({ error: 'Forbidden' }, { status: 403 })
   }
 
-  // Must have a story set before logging
-  if (!room.currentStory) {
-    return Response.json({ error: 'No story set' }, { status: 422 })
-  }
-
   // Parse and validate request body
   const body = await req.json().catch(() => null)
   const estimate = typeof body?.estimate === 'string' ? body.estimate.trim() : ''
@@ -43,7 +38,7 @@ export async function POST(
   }
 
   // Append to Redis log FIRST — durable even if reset fails
-  const entry: LogEntry = { story: room.currentStory, estimate }
+  const entry: LogEntry = { story: room.currentStory || '(untitled)', estimate }
   await redis.rpush(keys.log(roomId), JSON.stringify(entry))
   await redis.expire(keys.log(roomId), ROOM_TTL_SECONDS)
 

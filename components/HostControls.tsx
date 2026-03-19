@@ -56,12 +56,10 @@ export function HostControls({ roomId, currentStory, participants, onUpdated, re
   const handleReveal = useCallback(async () => {
     setSubmitting(true)
     try {
-      await fetch(`/api/rooms/${roomId}/reveal`, {
-        method: 'POST',
-      })
+      await fetch(`/api/rooms/${roomId}/reveal`, { method: 'POST' })
       onUpdated()
-    } catch {
-      // Silent catch — refreshRoom cycle will correct state
+    } catch (err) {
+      console.error('[handleReveal] error:', err)
     } finally {
       setSubmitting(false)
     }
@@ -87,6 +85,7 @@ export function HostControls({ roomId, currentStory, participants, onUpdated, re
       })
       if (res.ok) {
         setEstimateInput('')
+        setStoryInput('')
         setUiState('voting')
         onUpdated()
       }
