@@ -96,7 +96,7 @@ export function HostControls({ roomId, currentStory, participants, onUpdated, re
     <div className="sticky top-0 z-10 bg-white shadow-md px-4 py-3 rounded-b-lg mb-6">
       {uiState === 'voting' && !storyInput.trim() && (
         <p className="text-xs text-indigo-500 mb-2">
-          Add a story title and press <strong>Set Story</strong> so your team knows what they&apos;re estimating.
+          Add a story title and press <strong>Set Story</strong>{' '}so your team knows what they&apos;re estimating.
         </p>
       )}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
