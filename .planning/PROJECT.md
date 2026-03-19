@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A real-time planning poker app for dev teams to run story point estimation sessions in a browser. A host creates a session room and shares a link; participants join by entering their name (no account needed), pick a card from a Fibonacci deck, and the host reveals all votes at once to spark discussion. Each story's final agreed estimate gets saved to the session log.
+A real-time planning poker app for dev teams to run story point estimation sessions in a browser. A host creates a session room and shares a link; participants join by entering their name (no account needed), pick a card from a Fibonacci deck (1–55, ∞, ?), and the host reveals all votes simultaneously to prevent anchoring bias. Completed stories accumulate in a session log that any participant can export as Markdown. Participants who lose their connection can rejoin by name and recover their state.
 
 ## Core Value
 
@@ -12,51 +12,60 @@ Every participant sees the same state in real time — votes stay hidden until t
 
 ### Validated
 
-(None yet — ship to validate)
+- ✓ Host can create a session room and get a shareable link — v1.0
+- ✓ Participants join by entering their name (no login required) — v1.0
+- ✓ Participants can join as voters or observers (observers can't vote) — v1.0
+- ✓ Host enters a story title shown to all participants before each vote — v1.0
+- ✓ Participants pick a card from the Fibonacci deck (1, 2, 3, 5, 8, 13, 21, 34, 55, ∞, ?) — v1.0
+- ✓ Votes are hidden from all participants until revealed — v1.0
+- ✓ Host manually triggers vote reveal — all cards flip simultaneously — v1.0
+- ✓ After reveal, host can reset the round for re-voting on the same story — v1.0
+- ✓ Host can move to the next story with an agreed estimate — v1.0
+- ✓ Final agreed estimate for each story is recorded in a session log — v1.0
+- ✓ All participants see real-time updates (who joined, who voted, vote reveal) — v1.0
+- ✓ Participants can reconnect by name after losing their browser session — v1.0
+- ✓ Any participant can copy the session log as Markdown — v1.0
 
 ### Active
 
-- [ ] Host can create a session room and get a shareable link
-- [ ] Participants join by entering their name (no login required)
-- [ ] Participants can join as voters or observers (observers can't vote)
-- [ ] Host enters a story title/description shown to all participants before each vote
-- [ ] Participants pick a card from the Fibonacci deck (1, 2, 3, 5, 8, 13, 21, ∞, ?)
-- [ ] Votes are hidden from all participants (including host) until revealed
-- [ ] Host manually triggers vote reveal — all cards flip simultaneously
-- [ ] After reveal, host can reset the round for re-voting on the same story
-- [ ] Host can move to the next story
-- [ ] Final agreed estimate for each story is recorded in a session log
-- [ ] All participants see real-time updates (who joined, who voted, vote reveal)
+(None — clean slate for v1.1)
 
 ### Out of Scope
 
 - Login / accounts — name-only entry is sufficient for internal team use
-- Configurable card decks — Fibonacci is the standard, keep it simple for v1
+- Configurable card decks — Fibonacci is the standard, keep it simple
 - Jira / ticketing integrations — verbal announcement + title entry covers the need
 - Auto-reveal when all voted — host controls the pace
 - Mobile app — web browser is the target platform
+- Participant presence tracking — "stay in list" behaviour is fine for short synchronous sessions
 
 ## Context
 
-- Target users: a single dev team doing sprint planning sessions (typically 5–12 people)
-- Sessions are ephemeral — no need for long-term persistence beyond the session log
-- Deployment target: Vercel (free tier)
-- Real-time synchronization is the core technical challenge — the tech stack must support WebSocket-style communication or equivalent
+- **Shipped:** v1.0 — 2026-03-19
+- **Codebase:** ~2,440 TypeScript/TSX LOC, 4 phases, 17 plans, 67 automated tests
+- **Stack:** Next.js 16 App Router, Upstash Redis, Pusher Channels, Tailwind CSS v4, Vitest
+- **Deployment:** Vercel (free tier)
+- **Users:** Single dev team, sprint planning sessions (5–12 people, ephemeral sessions)
+- **Known limitations:** No per-participant offline indicator; participants stay in the list until 24h TTL
 
 ## Constraints
 
-- **Deployment**: Vercel — rules out persistent WebSocket servers; must use serverless-compatible real-time (e.g. Pusher, Ably, Supabase Realtime, or Vercel KV + polling)
-- **Auth**: None — participant identity is name-only; host identity is session ownership (cookie/token)
+- **Deployment**: Vercel — serverless; real-time via Pusher Channels
+- **Auth**: None — participant identity is name-only; host identity is cookie/token
 - **Scale**: Small team tool — not designed for hundreds of concurrent sessions
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Name-only identity (no auth) | Internal team tool; friction of accounts outweighs benefits | — Pending |
-| Fibonacci deck only (v1) | Reduces scope; most teams use this by default | — Pending |
-| Host-controlled reveal | Prevents anchoring; host sets discussion pace | — Pending |
-| Vercel deployment | Easy, free, zero infra maintenance | — Pending |
+| Name-only identity (no auth) | Internal team tool; friction of accounts outweighs benefits | ✓ Works well — no user complaints |
+| Fibonacci deck only (extended to 34, 55) | Reduces scope; added 34/55 mid-build for completeness | ✓ Good call |
+| Host-controlled reveal | Prevents anchoring; host sets discussion pace | ✓ Core mechanic works |
+| Vercel deployment | Easy, free, zero infra maintenance | ✓ Deploying v1.0 |
+| Pusher `unavailable` state for disconnect indicator | Avoids false flash on initial connect | ✓ Correct — `connecting` excluded intentionally |
+| `isDisconnected` clears only on `connected` | Prevents banner disappearing during retry cycles | ✓ Bug found and fixed in Phase 4 |
+| Name-match reconnect (no cookie) | Lets participants recover state after tab close | ✓ Works; no duplicate participant |
+| Participants stay in list when offline | Simpler than presence channels; fine for short sessions | — Pending user feedback |
 
 ---
-*Last updated: 2026-03-18 after initialization*
+*Last updated: 2026-03-19 after v1.0 milestone*
