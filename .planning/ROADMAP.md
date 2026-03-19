@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Room creation, name-only identity, Redis schema, Pusher skeleton (completed 2026-03-18)
 - [ ] **Phase 2: Real-Time Core** - Voting, simultaneous reveal, presence, re-vote
 - [ ] **Phase 3: Session Output** - Session log, post-reveal display, clipboard export
-- [ ] **Phase 4: Reconnection and Polish** - Reconnect by name, UX hardening
+- [x] **Phase 4: Reconnection and Polish** - Reconnect by name, UX hardening (completed 2026-03-19)
 
 ## Phase Details
 
@@ -97,4 +97,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Foundation | 4/4 | Complete   | 2026-03-18 |
 | 2. Real-Time Core | 3/5 | In Progress|  |
 | 3. Session Output | 5/6 | In Progress|  |
-| 4. Reconnection and Polish | 1/2 | In Progress|  |
+| 4. Reconnection and Polish | 2/2 | Complete   | 2026-03-19 |

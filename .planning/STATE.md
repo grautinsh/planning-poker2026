@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-03-19T07:58:22.544Z"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-19T08:07:31.785Z"
 last_activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 17
-  completed_plans: 16
+  completed_plans: 17
   percent: 58
 ---
 
@@ -64,6 +64,7 @@ Progress: [██████░░░░] 58%
 | Phase 03-session-output P04 | 4 | 2 tasks | 2 files |
 | Phase 03-session-output P05 | 8 | 2 tasks | 2 files |
 | Phase 04-reconnection-and-polish P01 | 1 | 2 tasks | 2 files |
+| Phase 04-reconnection-and-polish P02 | 20 | 3 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -108,6 +109,8 @@ Recent decisions affecting current work:
 - [Phase 04-reconnection-and-polish]: No-cookie request with name already in room treated as reconnect (not rejected) — returns existing UUID, trusted team context
 - [Phase 04-reconnection-and-polish]: getParticipants called once before branching in join route — single Redis round-trip for entire no-cookie path
 - [Phase 04-reconnection-and-polish]: Reconnect path B1 skips joinRoom and Pusher trigger — existing Redis record reused as-is, no state mutation
+- [Phase 04-reconnection-and-polish]: isDisconnected clears only on 'connected' (not on every non-'unavailable' state) — prevents banner disappearing during Pusher reconnect retry cycles
+- [Phase 04-reconnection-and-polish]: Banner guarded by room \!== null — prevents flash during initial page load when room is still fetching
 
 ### Pending Todos
 
@@ -121,6 +124,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-19T07:58:22.542Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-03-19T08:07:21.709Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None
