@@ -16,6 +16,8 @@ export function useRoom(roomId: string, onEvent: () => void) {
     channel.bind('vote-cast', onEvent)
     channel.bind('story-updated', onEvent)
     channel.bind('vote-revealed', onEvent)
+    channel.bind('round-reset', onEvent)
+    channel.bind('story-logged', onEvent)
 
     return () => {
       channel.unbind_all()
