@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-01-PLAN.md — Wave 0 test stubs created
-last_updated: "2026-03-19T06:30:39.304Z"
+stopped_at: Completed 03-03-PLAN.md — reset route, next-story route, clipboard utility
+last_updated: "2026-03-19T06:34:47.098Z"
 last_activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 progress:
   total_phases: 4
   completed_phases: 2
   total_plans: 15
-  completed_plans: 10
+  completed_plans: 12
   percent: 50
 ---
 
@@ -59,6 +59,8 @@ Progress: [█████░░░░░] 50%
 | Phase 02-real-time-core P04 | 2 | 3 tasks | 4 files |
 | Phase 02-real-time-core P05 | 20 | 3 tasks | 2 files |
 | Phase 03-session-output P01 | 5 | 2 tasks | 10 files |
+| Phase 03-session-output P02 | 5 | 2 tasks | 5 files |
+| Phase 03-session-output P03 | 5 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -91,6 +93,11 @@ Recent decisions affecting current work:
 - [Phase 02-real-time-core]: selectedValue reset on reveal in refreshRoom callback, not a separate effect — avoids double-render
 - [Phase 03-session-output]: Stub implementation files created for non-existent modules: vitest cannot intercept vi.mock factories for modules that don't exist on disk — stub files throwing TODO are required for imports to resolve
 - [Phase 03-session-output]: LogEntry type added to types/room.ts in Plan 01: required by clipboard.ts stub import chain, earlier than originally planned in Plan 02
+- [Phase 03-session-output]: StatsResult.consensusValue is non-optional string — always set to first voter value, only meaningful when isConsensus is true
+- [Phase 03-session-output]: computeStats returns null when all voters have non-numeric values — no numeric baseline for stats
+- [Phase 03-session-output]: Observer participants excluded from all stat calculations at the voters filter level in computeStats
+- [Phase 03-session-output]: currentStory is NOT cleared on reset — story title preserved for display between rounds (POST-03)
+- [Phase 03-session-output]: rpush called before multi() in next-story — log durability takes priority over room reset atomicity
 
 ### Pending Todos
 
@@ -104,6 +111,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-19T06:30:39.302Z
-Stopped at: Completed 03-01-PLAN.md — Wave 0 test stubs created
+Last session: 2026-03-19T06:34:47.096Z
+Stopped at: Completed 03-03-PLAN.md — reset route, next-story route, clipboard utility
 Resume file: None
