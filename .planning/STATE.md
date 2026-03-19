@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-real-time-core/02-01-PLAN.md
-last_updated: "2026-03-19T04:52:19.396Z"
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-03-19T04:52:48.971Z"
 last_activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 progress:
   total_phases: 4
@@ -55,6 +55,7 @@ Progress: [█████░░░░░] 50%
 | Phase 01-foundation P04 | 45 | 2 tasks | 8 files |
 | Phase 02-real-time-core P03 | 1 | 1 tasks | 1 files |
 | Phase 02-real-time-core P01 | 4 | 2 tasks | 4 files |
+| Phase 02-real-time-core P02 | 4 | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -78,6 +79,9 @@ Recent decisions affecting current work:
 - [Phase 01-foundation]: Upstash auto-deserialization guard: typeof check before JSON.parse in getParticipants — Upstash SDK may return pre-parsed objects
 - [Phase 02-real-time-core]: onEvent callback receives no event payload — Pusher event fires, client calls GET /api/rooms/[roomId], full state re-render (no delta patching)
 - [Phase 02-real-time-core]: FIBONACCI_DECK defined once in lib/constants.ts as as const tuple — z.enum(FIBONACCI_DECK) works server-side, array iteration works client-side, no duplication
+- [Phase 02-real-time-core]: redis.multi() enforced in reveal route — atomic snapshot prevents race conditions between vote capture and reveal flag
+- [Phase 02-real-time-core]: isHost derived per-request via validateToken (constant-time) — not cached in Redis
+- [Phase 02-real-time-core]: vote-cast Pusher event carries empty payload — only signals vote occurred, never reveals value
 
 ### Pending Todos
 
@@ -91,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-19T04:52:19.394Z
-Stopped at: Completed 02-real-time-core/02-01-PLAN.md
+Last session: 2026-03-19T04:52:48.969Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
