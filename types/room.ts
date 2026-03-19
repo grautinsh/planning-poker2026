@@ -36,6 +36,7 @@ export type RoomView = {
 export type RoomPageResponse = RoomView & {
   myParticipantId: string | null
   isHost: boolean
+  log: LogEntry[]   // Always present; empty array when no entries logged
 }
 
 // LogEntry: one completed story logged to Redis list (room:{roomId}:log)

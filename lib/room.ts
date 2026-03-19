@@ -1,6 +1,6 @@
 // lib/room.ts
 import { redis } from './redis'
-import type { RoomData, ParticipantData, ParticipantView, RoomView } from '@/types/room'
+import type { RoomData, ParticipantData, ParticipantView, RoomView, LogEntry } from '@/types/room'
 
 export const ROOM_TTL_SECONDS = 24 * 60 * 60  // 86400
 
@@ -87,4 +87,10 @@ export async function getParticipants(roomId: string): Promise<ParticipantData[]
   return Object.values(raw).map(v =>
     typeof v === 'string' ? JSON.parse(v) : v as ParticipantData
   )
+}
+
+export async function getLog(roomId: string): Promise<LogEntry[]> {
+  const raw = await redis.lrange(keys.log(roomId), 0, -1)
+  if (!raw || raw.length === 0) return []
+  return raw.map(v => typeof v === 'string' ? JSON.parse(v) : v as LogEntry)
 }

@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers'
-import { getRoom, getParticipants, toRoomView } from '@/lib/room'
+import { getRoom, getParticipants, toRoomView, getLog } from '@/lib/room'
 import { redis } from '@/lib/redis'
 import { validateToken } from '@/lib/auth'
 
@@ -31,5 +31,6 @@ export async function GET(
   const rawToken = cookieStore.get(`host-token-${roomId}`)?.value
   const isHost = rawToken ? await validateToken(rawToken, room.hostToken) : false
 
-  return Response.json({ ...view, myParticipantId: isKnown ? myParticipantId : null, isHost })
+  const log = await getLog(roomId)
+  return Response.json({ ...view, myParticipantId: isKnown ? myParticipantId : null, isHost, log })
 }
