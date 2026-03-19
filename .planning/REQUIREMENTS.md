@@ -17,7 +17,7 @@
 - [x] **IDNT-01**: Participant can join a room by entering only a display name (no account or login required)
 - [x] **IDNT-02**: Server assigns a UUID to each participant at join time; this UUID (not display name) is the primary key for vote tracking
 - [x] **IDNT-03**: Participant can choose to join as an observer (can see all activity but cannot vote)
-- [ ] **IDNT-04**: Participant can reconnect to a room by entering the same name and have their previous vote state restored
+- [x] **IDNT-04**: Participant can reconnect to a room by entering the same name and have their previous vote state restored
 
 ### Voting
 
@@ -75,7 +75,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | IDNT-01 | Phase 1 | Complete |
 | IDNT-02 | Phase 1 | Complete |
 | IDNT-03 | Phase 2 | Complete |
-| IDNT-04 | Phase 4 | Pending |
+| IDNT-04 | Phase 4 | Complete |
 | VOTE-01 | Phase 2 | Complete |
 | VOTE-02 | Phase 2 | Complete |
 | VOTE-03 | Phase 2 | Complete |

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 4 context gathered
-last_updated: "2026-03-19T07:29:12.879Z"
+stopped_at: Completed 04-01-PLAN.md
+last_updated: "2026-03-19T07:58:22.544Z"
 last_activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 15
-  completed_plans: 15
+  total_plans: 17
+  completed_plans: 16
   percent: 58
 ---
 
@@ -63,6 +63,7 @@ Progress: [██████░░░░] 58%
 | Phase 03-session-output P03 | 5 | 2 tasks | 3 files |
 | Phase 03-session-output P04 | 4 | 2 tasks | 2 files |
 | Phase 03-session-output P05 | 8 | 2 tasks | 2 files |
+| Phase 04-reconnection-and-polish P01 | 1 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -104,6 +105,9 @@ Recent decisions affecting current work:
 - [Phase 03-session-output]: Story input disabled (not hidden) in post-reveal and entering-estimate states — host can read story title but not edit during post-reveal flow
 - [Phase 03-session-output]: VoteStats defined at module level in page.tsx — consistent with Phase 1 module-level extraction pattern
 - [Phase 03-session-output]: SessionLog always rendered when room data loaded — no conditional on role/joined/revealed; copy button disabled (not hidden) when log empty
+- [Phase 04-reconnection-and-polish]: No-cookie request with name already in room treated as reconnect (not rejected) — returns existing UUID, trusted team context
+- [Phase 04-reconnection-and-polish]: getParticipants called once before branching in join route — single Redis round-trip for entire no-cookie path
+- [Phase 04-reconnection-and-polish]: Reconnect path B1 skips joinRoom and Pusher trigger — existing Redis record reused as-is, no state mutation
 
 ### Pending Todos
 
@@ -117,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-19T07:29:12.877Z
-Stopped at: Phase 4 context gathered
-Resume file: .planning/phases/04-reconnection-and-polish/04-CONTEXT.md
+Last session: 2026-03-19T07:58:22.542Z
+Stopped at: Completed 04-01-PLAN.md
+Resume file: None
