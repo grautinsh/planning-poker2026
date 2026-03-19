@@ -77,4 +77,58 @@ describe('join', () => {
     const res = await POST(makeRequest({}), { params })
     expect(res.status).toBe(400)
   })
+
+  describe('reconnect', () => {
+    it('no cookie + name matches a participant → returns existing UUID (not a new UUID)', async () => {
+      const { getParticipants } = await import('@/lib/room')
+      vi.mocked(getParticipants).mockResolvedValue([
+        { participantId: 'existing-uuid-abc', name: 'Alice', role: 'voter', joinedAt: '2026-01-01T00:00:00.000Z' }
+      ])
+
+      const res = await POST(makeRequest({ name: 'Alice' }), { params })
+      const body = await res.json()
+      expect(res.status).toBe(200)
+      expect(body.participantId).toBe('existing-uuid-abc')
+      expect(body.name).toBe('Alice')
+    })
+
+    it('no cookie + name matches a participant → joinRoom is NOT called', async () => {
+      const { getParticipants, joinRoom } = await import('@/lib/room')
+      vi.mocked(getParticipants).mockResolvedValue([
+        { participantId: 'existing-uuid-abc', name: 'Alice', role: 'voter', joinedAt: '2026-01-01T00:00:00.000Z' }
+      ])
+
+      await POST(makeRequest({ name: 'Alice' }), { params })
+      expect(vi.mocked(joinRoom)).not.toHaveBeenCalled()
+    })
+
+    it('no cookie + name matches a participant → cookie is re-issued with same UUID and httpOnly: true', async () => {
+      const { getParticipants } = await import('@/lib/room')
+      vi.mocked(getParticipants).mockResolvedValue([
+        { participantId: 'existing-uuid-abc', name: 'Alice', role: 'voter', joinedAt: '2026-01-01T00:00:00.000Z' }
+      ])
+
+      await POST(makeRequest({ name: 'Alice' }), { params })
+      expect(mockSet).toHaveBeenCalledWith(
+        'participant-test-room',
+        'existing-uuid-abc',
+        expect.objectContaining({ httpOnly: true })
+      )
+    })
+
+    it('no cookie + name NOT in participant list → new UUID created and joinRoom is called', async () => {
+      const { getParticipants, joinRoom } = await import('@/lib/room')
+      vi.mocked(getParticipants).mockResolvedValue([
+        { participantId: 'existing-uuid-abc', name: 'Alice', role: 'voter', joinedAt: '2026-01-01T00:00:00.000Z' }
+      ])
+
+      const res = await POST(makeRequest({ name: 'Bob' }), { params })
+      const body = await res.json()
+      expect(res.status).toBe(200)
+      // Bob is new — should get a fresh UUID
+      expect(body.participantId).not.toBe('existing-uuid-abc')
+      expect(body.participantId).toMatch(/^[0-9a-f-]{36}$/)
+      expect(vi.mocked(joinRoom)).toHaveBeenCalled()
+    })
+  })
 })
