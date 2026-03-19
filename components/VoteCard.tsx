@@ -9,7 +9,7 @@ interface VoteCardProps {
 
 export function VoteCard({ value, revealed, index, participantName }: VoteCardProps) {
   return (
-    <div className="relative w-14 h-20 perspective-[600px]">
+    <div className="relative w-20 h-28 perspective-[600px]">
       <div
         className={[
           'relative w-full h-full transform-3d transition-transform duration-500 ease-out motion-reduce:transition-none',
@@ -28,9 +28,9 @@ export function VoteCard({ value, revealed, index, participantName }: VoteCardPr
 
         {/* Back face — card value (visible after reveal) */}
         <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-lg bg-white border border-slate-200 flex flex-col items-center justify-center gap-1">
-          <span className="text-2xl font-bold text-slate-800">{value}</span>
+          <span className="text-3xl font-bold text-slate-800">{value}</span>
           {participantName && (
-            <span className="text-xs text-slate-500 truncate max-w-12 text-center">
+            <span className="text-xs text-slate-500 truncate max-w-16 text-center px-1">
               {participantName}
             </span>
           )}
