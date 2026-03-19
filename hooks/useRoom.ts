@@ -21,7 +21,8 @@ export function useRoom(roomId: string, onEvent: () => void) {
     channel.bind('story-logged', onEvent)
 
     const handleStateChange = ({ current }: { previous: string; current: string }) => {
-      setIsDisconnected(current === 'unavailable')
+      if (current === 'unavailable') setIsDisconnected(true)
+      if (current === 'connected') setIsDisconnected(false)
     }
     pusherClient.connection.bind('state_change', handleStateChange)
 
