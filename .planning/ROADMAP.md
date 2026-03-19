@@ -64,7 +64,15 @@ Plans:
   2. The host can reset the current story for a re-vote; all cards clear and the voting phase restarts with the story title preserved
   3. The host can move to the next story by entering a final agreed estimate; the completed story appears in the session log for all participants
   4. Any participant can click a single button to copy the full session log as plain text or Markdown to their clipboard
-**Plans**: TBD
+**Plans**: 6 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Wave 0: Failing test stubs for stats, reset, next-story, clipboard, log field
+- [ ] 03-02-PLAN.md — Types + lib: LogEntry, getLog, computeStats, GET route log field, useRoom new events
+- [ ] 03-03-PLAN.md — API routes: reset, next-story + buildMarkdownTable utility
+- [ ] 03-04-PLAN.md — HostControls three-state refactor + VoteStats row in room page
+- [ ] 03-05-PLAN.md — SessionLog component + clipboard export wired into room page
+- [ ] 03-06-PLAN.md — Full test suite gate + human verification checkpoint
 
 ### Phase 4: Reconnection and Polish
 **Goal**: The app stays usable under real-world conditions — participants who lose and regain their connection are restored to correct state without disrupting the session
@@ -84,5 +92,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Foundation | 4/4 | Complete   | 2026-03-18 |
 | 2. Real-Time Core | 3/5 | In Progress|  |
-| 3. Session Output | 0/TBD | Not started | - |
+| 3. Session Output | 0/6 | Not started | - |
 | 4. Reconnection and Polish | 0/TBD | Not started | - |
