@@ -81,7 +81,11 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. A participant who closes and reopens their browser tab can re-enter their name and rejoin the room with their previous vote state restored
   2. A participant who reconnects after a reveal event sees the correct post-reveal state (not a stale pre-reveal screen)
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Join route: name-match reconnect + unit tests
+- [ ] 04-02-PLAN.md — Connection indicator (useRoom hook) + room-not-found polish + human verification
 
 ## Progress
 
