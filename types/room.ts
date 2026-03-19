@@ -30,3 +30,10 @@ export type RoomView = {
   revealed: boolean
   participants: ParticipantView[]
 }
+
+// Response type for GET /api/rooms/[roomId] — extends RoomView with client-specific fields
+// isHost and myParticipantId are derived at request time, not stored in Redis
+export type RoomPageResponse = RoomView & {
+  myParticipantId: string | null
+  isHost: boolean
+}

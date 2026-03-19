@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers'
 import { getRoom, getParticipants, toRoomView } from '@/lib/room'
 import { redis } from '@/lib/redis'
+import { validateToken } from '@/lib/auth'
 
 export async function GET(
   req: Request,
@@ -26,5 +27,9 @@ export async function GET(
   const myParticipantId = cookieStore.get(`participant-${roomId}`)?.value ?? null
   const isKnown = myParticipantId ? participants.some(p => p.participantId === myParticipantId) : false
 
-  return Response.json({ ...view, myParticipantId: isKnown ? myParticipantId : null })
+  // Derive isHost from host-token cookie — constant-time comparison
+  const rawToken = cookieStore.get(`host-token-${roomId}`)?.value
+  const isHost = rawToken ? await validateToken(rawToken, room.hostToken) : false
+
+  return Response.json({ ...view, myParticipantId: isKnown ? myParticipantId : null, isHost })
 }
