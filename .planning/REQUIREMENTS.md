@@ -29,7 +29,7 @@
 
 ### Post-Reveal
 
-- [ ] **POST-01**: After reveal, all participants see each voter's name alongside their card value
+- [x] **POST-01**: After reveal, all participants see each voter's name alongside their card value
 - [x] **POST-02**: After reveal, vote summary is displayed: minimum, maximum, and average
 - [x] **POST-03**: Host can reset the current story to allow a re-vote (clears all votes, returns to voting phase, story title preserved)
 
@@ -81,7 +81,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | VOTE-03 | Phase 2 | Complete |
 | VOTE-04 | Phase 2 | Complete |
 | VOTE-05 | Phase 2 | Complete |
-| POST-01 | Phase 3 | Pending |
+| POST-01 | Phase 3 | Complete |
 | POST-02 | Phase 3 | Complete |
 | POST-03 | Phase 3 | Complete |
 | LOG-01 | Phase 3 | Complete |
