@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-03-19T04:52:48.971Z"
+stopped_at: Completed 02-04-PLAN.md
+last_updated: "2026-03-19T04:57:00.060Z"
 last_activity: 2026-03-18 — Completed 01-01 scaffold and test infrastructure
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 9
-  completed_plans: 7
+  completed_plans: 8
   percent: 50
 ---
 
@@ -56,6 +56,7 @@ Progress: [█████░░░░░] 50%
 | Phase 02-real-time-core P03 | 1 | 1 tasks | 1 files |
 | Phase 02-real-time-core P01 | 4 | 2 tasks | 4 files |
 | Phase 02-real-time-core P02 | 4 | 2 tasks | 8 files |
+| Phase 02-real-time-core P04 | 2 | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,8 @@ Recent decisions affecting current work:
 - [Phase 02-real-time-core]: redis.multi() enforced in reveal route — atomic snapshot prevents race conditions between vote capture and reveal flag
 - [Phase 02-real-time-core]: isHost derived per-request via validateToken (constant-time) — not cached in Redis
 - [Phase 02-real-time-core]: vote-cast Pusher event carries empty payload — only signals vote occurred, never reveals value
+- [Phase 02-real-time-core]: JoinForm refactored to single submit path with role state — cleaner than dual-button approach
+- [Phase 02-real-time-core]: Observer exclusion at parent level — CardDeck rendered only for voters, VoteCard used for revealed display
 
 ### Pending Todos
 
@@ -95,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-19T04:52:48.969Z
-Stopped at: Completed 02-02-PLAN.md
+Last session: 2026-03-19T04:57:00.058Z
+Stopped at: Completed 02-04-PLAN.md
 Resume file: None
