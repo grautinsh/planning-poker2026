@@ -30,14 +30,14 @@
 ### Post-Reveal
 
 - [ ] **POST-01**: After reveal, all participants see each voter's name alongside their card value
-- [ ] **POST-02**: After reveal, vote summary is displayed: minimum, maximum, and average
-- [ ] **POST-03**: Host can reset the current story to allow a re-vote (clears all votes, returns to voting phase, story title preserved)
+- [x] **POST-02**: After reveal, vote summary is displayed: minimum, maximum, and average
+- [x] **POST-03**: Host can reset the current story to allow a re-vote (clears all votes, returns to voting phase, story title preserved)
 
 ### Session Log
 
-- [ ] **LOG-01**: Host can move to the next story, which prompts for a final agreed estimate, appends it to the session log, and starts a fresh voting round
-- [ ] **LOG-02**: Session log is visible to all participants and accumulates story title + agreed estimate for each completed story
-- [ ] **LOG-03**: Participant can copy the session log to clipboard in a plain-text / Markdown format
+- [x] **LOG-01**: Host can move to the next story, which prompts for a final agreed estimate, appends it to the session log, and starts a fresh voting round
+- [x] **LOG-02**: Session log is visible to all participants and accumulates story title + agreed estimate for each completed story
+- [x] **LOG-03**: Participant can copy the session log to clipboard in a plain-text / Markdown format
 
 ## v2 Requirements
 
@@ -82,11 +82,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | VOTE-04 | Phase 2 | Complete |
 | VOTE-05 | Phase 2 | Complete |
 | POST-01 | Phase 3 | Pending |
-| POST-02 | Phase 3 | Pending |
-| POST-03 | Phase 3 | Pending |
-| LOG-01 | Phase 3 | Pending |
-| LOG-02 | Phase 3 | Pending |
-| LOG-03 | Phase 3 | Pending |
+| POST-02 | Phase 3 | Complete |
+| POST-03 | Phase 3 | Complete |
+| LOG-01 | Phase 3 | Complete |
+| LOG-02 | Phase 3 | Complete |
+| LOG-03 | Phase 3 | Complete |
 
 **Coverage:**
 - v1 requirements: 19 total
