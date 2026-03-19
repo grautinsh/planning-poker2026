@@ -43,6 +43,25 @@ export async function POST(
     // Cookie exists but participant is gone (expired room) — create new below
   }
 
+  // Path B: no cookie — check participant list for name match (IDNT-04 reconnect)
+  // getParticipants called ONCE here; result reused in both B1 and B2 paths
+  const allParticipants = await getParticipants(roomId)
+  const nameMatch = allParticipants.find(p => p.name === name)
+
+  if (nameMatch) {
+    // Path B1: name already in room — treat as reconnecting participant
+    // Re-issue cookie with existing UUID; do NOT call joinRoom, do NOT broadcast
+    cookieStore.set(`participant-${roomId}`, nameMatch.participantId, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60,
+      path: '/',
+    })
+    return Response.json({ participantId: nameMatch.participantId, name: nameMatch.name })
+  }
+
+  // Path B2: new participant — name not taken
   // Server-assigned UUID — primary key for vote tracking (IDNT-02)
   const participantId = crypto.randomUUID()
   await joinRoom(roomId, participantId, name, role)
