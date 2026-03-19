@@ -46,7 +46,14 @@ Plans:
   3. When the host triggers reveal, all cards flip simultaneously on every client in a single event — no value is visible in the network tab before the reveal
   4. A participant who joins as an observer can see all activity but has no card selection available
   5. Votes submitted after the host triggers reveal are rejected by the server; a race condition cannot produce blank or stale cards
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Wave 0: FIBONACCI_DECK constant + test stubs (vote, story, reveal)
+- [ ] 02-02-PLAN.md — API layer: vote, story, reveal routes + isHost in GET + RoomPageResponse type
+- [ ] 02-03-PLAN.md — useRoom hook: bind all 4 Pusher events to onEvent callback
+- [ ] 02-04-PLAN.md — UI components: HostControls, CardDeck, VoteCard with 3D flip animation
+- [ ] 02-05-PLAN.md — Room page wiring + ParticipantList update + human verification checkpoint
 
 ### Phase 3: Session Output
 **Goal**: The session produces a tangible record — agreed estimates are accumulated in a visible log that any participant can copy and use outside the tool
