@@ -10,7 +10,7 @@
 - [x] **SESS-01**: Host can create a room and receive a shareable URL
 - [x] **SESS-02**: Room creation issues a host token stored in an httpOnly cookie, allowing the host to reclaim controls if their tab closes or reloads
 - [x] **SESS-03**: Rooms automatically expire after 24 hours (Redis TTL — no manual cleanup needed)
-- [ ] **SESS-04**: Host can enter a story title that is immediately broadcast and displayed to all participants
+- [x] **SESS-04**: Host can enter a story title that is immediately broadcast and displayed to all participants
 
 ### Identity
 
@@ -21,11 +21,11 @@
 
 ### Voting
 
-- [ ] **VOTE-01**: Participant can select a card from the Fibonacci deck (1, 2, 3, 5, 8, 13, 21, ∞, ?)
-- [ ] **VOTE-02**: Vote values are never exposed to any client (including the host) before reveal — server enforces a redacted serialization view during voting phase
+- [x] **VOTE-01**: Participant can select a card from the Fibonacci deck (1, 2, 3, 5, 8, 13, 21, ∞, ?)
+- [x] **VOTE-02**: Vote values are never exposed to any client (including the host) before reveal — server enforces a redacted serialization view during voting phase
 - [x] **VOTE-03**: Participants can see a presence indicator for each participant showing voted / not voted (but not the value)
 - [x] **VOTE-04**: Host can trigger a reveal; all vote values are transmitted in a single broadcast event and all cards flip simultaneously on every client
-- [ ] **VOTE-05**: The server rejects vote submissions after the host has triggered a reveal (prevents race condition producing blank cards)
+- [x] **VOTE-05**: The server rejects vote submissions after the host has triggered a reveal (prevents race condition producing blank cards)
 
 ### Post-Reveal
 
@@ -71,16 +71,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SESS-01 | Phase 1 | Complete |
 | SESS-02 | Phase 1 | Complete |
 | SESS-03 | Phase 1 | Complete |
-| SESS-04 | Phase 2 | Pending |
+| SESS-04 | Phase 2 | Complete |
 | IDNT-01 | Phase 1 | Complete |
 | IDNT-02 | Phase 1 | Complete |
 | IDNT-03 | Phase 2 | Pending |
 | IDNT-04 | Phase 4 | Pending |
-| VOTE-01 | Phase 2 | Pending |
-| VOTE-02 | Phase 2 | Pending |
+| VOTE-01 | Phase 2 | Complete |
+| VOTE-02 | Phase 2 | Complete |
 | VOTE-03 | Phase 2 | Complete |
 | VOTE-04 | Phase 2 | Complete |
-| VOTE-05 | Phase 2 | Pending |
+| VOTE-05 | Phase 2 | Complete |
 | POST-01 | Phase 3 | Pending |
 | POST-02 | Phase 3 | Pending |
 | POST-03 | Phase 3 | Pending |
