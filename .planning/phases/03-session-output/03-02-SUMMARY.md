@@ -74,7 +74,7 @@ Each task was committed atomically:
 1. **Task 1: Add LogEntry, getLog, and log field to GET response** - `687c7bd` (feat)
 2. **Task 2: Implement computeStats and bind new Pusher events** - `5c4e753` (feat)
 
-**Plan metadata:** _(pending final docs commit)_
+**Plan metadata:** `b1bc913` (docs)
 
 ## Files Created/Modified
 - `types/room.ts` - Added log: LogEntry[] field to RoomPageResponse type
@@ -103,3 +103,15 @@ None.
 ---
 *Phase: 03-session-output*
 *Completed: 2026-03-19*
+
+## Self-Check: PASSED
+
+- types/room.ts: FOUND
+- lib/room.ts: FOUND
+- lib/stats.ts: FOUND
+- app/api/rooms/[roomId]/route.ts: FOUND
+- hooks/useRoom.ts: FOUND
+- 03-02-SUMMARY.md: FOUND
+- Task 1 commit 687c7bd: FOUND
+- Task 2 commit 5c4e753: FOUND
+- Metadata commit b1bc913: FOUND
