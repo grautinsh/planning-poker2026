@@ -37,3 +37,7 @@ export type RoomPageResponse = RoomView & {
   myParticipantId: string | null
   isHost: boolean
 }
+
+// LogEntry: one completed story logged to Redis list (room:{roomId}:log)
+// Added in Phase 3 Plan 01 stubs; used by GET /api/rooms/[roomId] (log field) and clipboard
+export type LogEntry = { story: string; estimate: string }
