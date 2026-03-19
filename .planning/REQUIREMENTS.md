@@ -23,8 +23,8 @@
 
 - [ ] **VOTE-01**: Participant can select a card from the Fibonacci deck (1, 2, 3, 5, 8, 13, 21, ∞, ?)
 - [ ] **VOTE-02**: Vote values are never exposed to any client (including the host) before reveal — server enforces a redacted serialization view during voting phase
-- [ ] **VOTE-03**: Participants can see a presence indicator for each participant showing voted / not voted (but not the value)
-- [ ] **VOTE-04**: Host can trigger a reveal; all vote values are transmitted in a single broadcast event and all cards flip simultaneously on every client
+- [x] **VOTE-03**: Participants can see a presence indicator for each participant showing voted / not voted (but not the value)
+- [x] **VOTE-04**: Host can trigger a reveal; all vote values are transmitted in a single broadcast event and all cards flip simultaneously on every client
 - [ ] **VOTE-05**: The server rejects vote submissions after the host has triggered a reveal (prevents race condition producing blank cards)
 
 ### Post-Reveal
@@ -78,8 +78,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | IDNT-04 | Phase 4 | Pending |
 | VOTE-01 | Phase 2 | Pending |
 | VOTE-02 | Phase 2 | Pending |
-| VOTE-03 | Phase 2 | Pending |
-| VOTE-04 | Phase 2 | Pending |
+| VOTE-03 | Phase 2 | Complete |
+| VOTE-04 | Phase 2 | Complete |
 | VOTE-05 | Phase 2 | Pending |
 | POST-01 | Phase 3 | Pending |
 | POST-02 | Phase 3 | Pending |
