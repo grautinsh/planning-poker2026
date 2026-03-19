@@ -10,6 +10,7 @@ import { HostControls } from '@/components/HostControls'
 import { CardDeck } from '@/components/CardDeck'
 import { VoteCard } from '@/components/VoteCard'
 import { computeStats } from '@/lib/stats'
+import { SessionLog } from '@/components/SessionLog'
 
 // Module-level component to prevent remount on parent re-render
 function VoteStats({ participants }: { participants: ParticipantView[] }) {
@@ -198,6 +199,9 @@ export default function RoomPage() {
           </div>
         </div>
       )}
+
+      {/* Session log — always visible, empty state shown until stories logged */}
+      <SessionLog log={room.log} />
     </main>
   )
 }
