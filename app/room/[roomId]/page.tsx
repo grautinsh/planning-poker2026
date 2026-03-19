@@ -2,13 +2,42 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'next/navigation'
-import type { RoomPageResponse } from '@/types/room'
+import type { RoomPageResponse, ParticipantView } from '@/types/room'
 import { useRoom } from '@/hooks/useRoom'
 import { JoinForm } from '@/components/JoinForm'
 import { ParticipantList } from '@/components/ParticipantList'
 import { HostControls } from '@/components/HostControls'
 import { CardDeck } from '@/components/CardDeck'
 import { VoteCard } from '@/components/VoteCard'
+import { computeStats } from '@/lib/stats'
+
+// Module-level component to prevent remount on parent re-render
+function VoteStats({ participants }: { participants: ParticipantView[] }) {
+  const stats = computeStats(participants)
+  if (!stats) return null
+
+  if (stats.isConsensus) {
+    return (
+      <div className="mb-4 inline-flex items-center gap-1.5 bg-green-50 text-green-700 border border-green-200 text-sm font-medium px-3 py-1.5 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Consensus: {stats.consensusValue}
+      </div>
+    )
+  }
+
+  return (
+    <p className="mb-4 text-sm text-slate-600">
+      Min: {stats.min} · Max: {stats.max} · Avg: {stats.avg.toFixed(1)}
+      {stats.nonNumericCount > 0 && (
+        <span className="ml-2 text-slate-400 text-xs">
+          ({stats.nonNumericCount} non-numeric excluded)
+        </span>
+      )}
+    </p>
+  )
+}
 
 export default function RoomPage() {
   const params = useParams()
@@ -99,6 +128,7 @@ export default function RoomPage() {
           currentStory={room.currentStory}
           participants={room.participants}
           onUpdated={refreshRoom}
+          revealed={room.revealed}
         />
       )}
 
@@ -148,6 +178,10 @@ export default function RoomPage() {
       {room.revealed && (
         <div className="mt-6 border-t border-slate-100 pt-4">
           <p className="text-xs text-slate-500 uppercase tracking-wide font-medium mb-3">Results</p>
+
+          {/* VoteStats row — between heading and card grid */}
+          <VoteStats participants={room.participants} />
+
           <div className="flex flex-wrap gap-4">
             {room.participants
               .filter(p => p.role === 'voter')
